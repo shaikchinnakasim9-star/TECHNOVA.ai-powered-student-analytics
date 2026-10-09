@@ -49,7 +49,9 @@ npm run dev
 
 ## Deploy to Render
 
-The repository-root `render.yaml` defines the client as a Render static site and the API as a Node web service. Push the repository contents, including `client`, `server`, and `render.yaml`, to GitHub. In Render, create a Blueprint and select that repository. The Blueprint configures the frontend/API URLs and SPA route fallback automatically.
+The repository-root `render.yaml` defines the client as a Render static site and the API as a Node web service. Push the repository contents, including `client`, `server`, and `render.yaml`, to GitHub. In Render, create or update the Blueprint for that repository and sync it. The Blueprint configures the frontend/API URLs, API CORS origin, and SPA route fallback automatically.
+
+If configuring the services manually, set the frontend's `VITE_API_URL` to the API service URL (with or without a trailing `/api`), and set the API's `CLIENT_URL` to the frontend's full `https://...onrender.com` URL. The client normalizes the API URL to the `/api` base path. The API's `/api/health` endpoint should return HTTP 200 before testing the frontend.
 
 The API starts in demo in-memory mode when `MONGODB_URI` is not set. Demo changes are not persistent across service restarts; configure a MongoDB Atlas connection as the API service's `MONGODB_URI` for persistent data. The free API service may spin down when idle.
 

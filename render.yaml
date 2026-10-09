@@ -14,9 +14,9 @@ services:
         generateValue: true
       - key: CLIENT_URL
         fromService:
-          type: web
+          type: static
           name: campuspulse-web
-          property: host
+          property: url
 
   - type: web
     name: campuspulse-web
