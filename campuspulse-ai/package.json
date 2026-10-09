@@ -1,0 +1,8 @@
+{
+  "name": "campuspulse-ai",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "echo 'Run frontend and backend separately. Use npm install in client and server directories.'"
+  }
+}
