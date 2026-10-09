@@ -22,7 +22,7 @@ services:
     name: campuspulse-web
     runtime: static
     rootDir: client
-    buildCommand: npm ci && npm run build
+    buildCommand: npm ci --include=dev && npm run build
     staticPublishPath: dist
     routes:
       - type: rewrite
