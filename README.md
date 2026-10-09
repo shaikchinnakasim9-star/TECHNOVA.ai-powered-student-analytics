@@ -5,10 +5,11 @@ CampusPulse AI is a full-stack student success and risk intelligence platform fo
 ## Project structure
 
 ```text
-campuspulse-ai/
+.
 ├── client/
 │   ├── src/
 │   ├── package.json
+│   ├── vercel.json
 │   ├── vite.config.js
 │   ├── tailwind.config.js
 │   ├── postcss.config.js
@@ -30,14 +31,14 @@ campuspulse-ai/
 
 ## Local setup on Windows
 
-1. Open a terminal in `campuspulse-ai/client` and run:
+1. Open a terminal in `client` and run:
 
 ```bash
 npm install
 npm run dev
 ```
 
-2. Open a second terminal in `campuspulse-ai/server` and run:
+2. Open a second terminal in `server` and run:
 
 ```bash
 npm install
@@ -45,6 +46,16 @@ npm run dev
 ```
 
 3. Open the frontend in the browser at `http://localhost:5173`.
+
+## Deploy to Render
+
+The repository-root `render.yaml` defines the client as a Render static site and the API as a Node web service. Push the repository contents, including `client`, `server`, and `render.yaml`, to GitHub. In Render, create a Blueprint and select that repository. The Blueprint configures the frontend/API URLs and SPA route fallback automatically.
+
+The API starts in demo in-memory mode when `MONGODB_URI` is not set. Demo changes are not persistent across service restarts; configure a MongoDB Atlas connection as the API service's `MONGODB_URI` for persistent data. The free API service may spin down when idle.
+
+## Deploy the frontend to Vercel
+
+Import the GitHub repository in Vercel and set the project Root Directory to `client`. The included `client/vercel.json` configures the Vite build and SPA route fallback. To use the Vercel frontend with the API, first deploy the API (for example, with the Render Blueprint), then set Vercel's `VITE_API_URL` environment variable to the API URL ending in `/api` and redeploy. The frontend cannot use the local `localhost` API URL in production.
 
 ## MongoDB setup
 

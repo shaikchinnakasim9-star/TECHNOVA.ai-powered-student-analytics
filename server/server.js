@@ -28,6 +28,12 @@ const allowedOrigins = (process.env.CLIENT_URL || 'http://localhost:5173')
   .split(',')
   .map((origin) => origin.trim())
   .filter(Boolean)
+  .map((origin) => {
+    const normalizedOrigin = /^https?:\/\//i.test(origin)
+      ? origin
+      : `https://${origin}`
+    return normalizedOrigin.replace(/\/+$/, '')
+  })
 
 app.use(cors({
   origin: (origin, callback) => {
