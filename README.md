@@ -59,6 +59,10 @@ The API starts in demo in-memory mode when `MONGODB_URI` is not set. Demo change
 
 Import the GitHub repository in Vercel and set the project Root Directory to `client`. The included `client/vercel.json` configures the Vite build and SPA route fallback. To use the Vercel frontend with the API, first deploy the API (for example, with the Render Blueprint), then set Vercel's `VITE_API_URL` environment variable to the API URL ending in `/api` and redeploy. The frontend cannot use the local `localhost` API URL in production.
 
+## Deploy the frontend to GitHub Pages
+
+The `.github/workflows/static.yml` workflow builds the Vite client and publishes `client/dist` to GitHub Pages. Set the repository's Pages source to **GitHub Actions**, then push to `main` or run the workflow from the Actions tab. The site is published at `https://shaikchinnakasim9-star.github.io/TECHNOVA.ai-powered-student-analytics/`; the workflow configures this project path and SPA fallback automatically.
+
 ## MongoDB setup
 
 - Use MongoDB Atlas or install MongoDB Community Edition locally.
