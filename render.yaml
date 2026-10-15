@@ -17,6 +17,8 @@ services:
           type: static
           name: campuspulse-web
           property: url
+      - key: CORS_ORIGINS
+        value: https://shaikchinnakasim9-star.github.io
 
   - type: web
     name: campuspulse-web

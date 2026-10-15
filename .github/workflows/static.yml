@@ -40,6 +40,8 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Install and build client
+        env:
+          VITE_API_URL: https://campuspulse-api.onrender.com
         run: |
           npm ci --prefix client
           npm run build --prefix client -- --base=/TECHNOVA.ai-powered-student-analytics/

@@ -5,7 +5,9 @@ const apiOrigin = configuredApiUrl
   ? /^https?:\/\//i.test(configuredApiUrl)
     ? configuredApiUrl
     : `https://${configuredApiUrl}`
-  : 'http://localhost:5000'
+  : import.meta.env.DEV
+    ? 'http://localhost:5000'
+    : 'https://campuspulse-api.onrender.com'
 const normalizedApiOrigin = apiOrigin.replace(/\/+$/, '')
 const baseURL = normalizedApiOrigin.endsWith('/api')
   ? normalizedApiOrigin
